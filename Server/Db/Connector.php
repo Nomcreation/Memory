@@ -12,10 +12,9 @@ class Connector
     /**
      * Paramètres de connexion à la base de données
      */
-    private $host       = '127.0.0.1';
-    private $port       = '3306';
+    private $host       = 'db';
     private $dbUser      = 'root';
-    private $dbPassword  = "";
+    private $dbPassword  = "root";
     private $dbName      = 'memory';
 
     /**
