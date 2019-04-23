@@ -1,0 +1,37 @@
+version: '2'
+
+services:
+  php:
+    build: ./docker/php
+    volumes:
+      - ./:/var/www/html
+      - ./docker/php/cnf/php.ini:/usr/local/etc/php/php.ini
+      - ./docker/sites/:/etc/apache2/sites-enabled
+    ports:
+      - 8000:80
+    expose:
+      - 8000
+    depends_on:
+      - db
+    networks:
+      - myohmy
+  db:
+    build: ./docker/db
+    volumes:
+      - persisted_data:/var/lib/mysql
+    restart: always
+    networks:
+      - myohmy
+  adminer:
+    image: adminer
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - 8080:8080
+    networks:
+      - myohmy
+volumes:
+  persisted_data:
+networks:
+  myohmy:
