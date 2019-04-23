@@ -1,0 +1,34 @@
+//Couleurs
+$game_pad_color: rgba(0, 255, 255, 1);
+$card_back_color: rgba(0, 148, 148, 1);
+
+// Taille des conteneurs
+$xl_container_width: 780px;
+$md_container_width: 450px;
+$sm_container_width: 370px;
+
+// Taille des cartes
+$card_size: 100px;
+$card_size_small: 80px;
+
+// Hauteur de la barre de progression
+$progress_bar_height: 26px;
+
+// Definition des points de changement de grille.
+$lg_breackpoint: 1199.98px;
+$custom_breackpoint: 799.98px;
+$xs_breackpoint: 575.98px;
+
+// Importation des styles de chaque élément
+@import "memory";
+@import "progressBar";
+@import "bestScores";
+
+// Styles Globaux
+body { background-color: #cdcdcd; }
+h1 { margin: auto; }
+div.main { margin-top: 20px; }
+
+@media (max-width: $xs_breackpoint) {
+  h1 {font-size: 1.8em;}
+}

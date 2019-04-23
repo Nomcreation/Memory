@@ -1,0 +1,22 @@
+.progress {
+  // Taille de base de la barre de progression
+  width: $xl_container_width;
+  height: $progress_bar_height;
+  margin: auto;
+
+  > .progress-bar {
+    div {
+      // Affichage du nombre de secondes restantes
+      color: #000;
+      font-weight: bold;
+      background-color: rgba(240, 248, 255, 0.4);
+    }
+  }
+  // Getsion des points de changement de grille BS
+  @media (max-width: $custom_breackpoint) {
+    width: $md_container_width;
+  }
+  @media (max-width: $xs_breackpoint) {
+    width: $sm_container_width;
+  }
+}

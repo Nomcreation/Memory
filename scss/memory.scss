@@ -1,0 +1,65 @@
+#memory-container {
+  // Style du conteneur principal
+  width: $xl_container_width;
+  padding: 5px;
+  margin: auto;
+  background-color: $game_pad_color;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  > .memory-card {
+    // Style des cartes
+    height: $card_size;
+    width: $card_size;
+    clear: both;
+    margin: 5px;
+
+    > .inner {
+      // Contenuer qui permet la rotation des cartes au click
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.3s;
+      transform-style: preserve-3d;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+      > div {
+        // Style général des cartes (face & dos)
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+
+        &.front {
+          // Couleur du dos de la carte
+          background-color: rgba(0, 148, 148, 1);
+        }
+
+        &.back {
+          // Images sur la face de la carte
+          background: #cdcdcd url("../img/cards.png") no-repeat;
+          -moz-transform: rotate(180deg);
+          -webkit-transform: rotate(180deg);
+          transform: rotateY(180deg);
+          @media (max-width: $xs_breackpoint) {
+            background-size: $card_size_small;
+          }
+        }
+      }
+    }
+    // Changement de la taille des cartes pour les petits écrans
+    @media (max-width: $xs_breackpoint) {
+      width: $card_size_small;
+      height: $card_size_small;
+    }
+  }
+  // Gestion de la taille du conteneur principal pour les différentes grilles BS
+  @media (max-width: $custom_breackpoint) {
+    width: $md_container_width;
+  }
+  @media (max-width: $xs_breackpoint) {
+    width: $sm_container_width;
+  }
+}
+

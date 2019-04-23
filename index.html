@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jeu de mémoire</title>
+
+    <!-- Inclusion de JQuery depuis le CDN (Content delivery network)-->
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"
+            integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
+            crossorigin="anonymous"></script>
+
+    <!-- Inclusion du css Bootstrap depuis le CDN -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Inclusion de la feuille de style compilée  -->
+    <link href="css/style.css" rel="stylesheet">
+
+</head>
+<body>
+<header >
+    <!-- Barre de navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a id="new" class="navbar-brand btn btn-default">Nouveau</a>
+        <h1>Jeu de mémoire</h1>
+    </nav>
+</header>
+
+<div class="container-fluid">
+    <!-- Conteneur pricipal -->
+    <div class="row main">
+
+        <div class="col-xl-9 col-lg-12 display">
+            <!-- Conteneur pour l'affichage des cartes -->
+            <div id="memory-container">
+                <!-- Conteneur temporaire pour récupérer la taille -->
+                <div class="memory-card inner d-none"></div>
+            </div>
+            <!-- Barre de progression -->
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar"
+                     aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-lg-12">
+            <!-- Tableau des scores -->
+            <div id="best-scores">
+                <h2 class="text-center">Meilleurs scores</h2>
+                <!-- Liste des scores -->
+                <ol>
+                </ol>
+
+                <!-- Gestion des scores -->
+                <button id="reset" class="btn btn-sm btn-danger">Réinitialiser</button>
+                <button id="show-more" class="btn btn-sm btn-primary">Voir tous les scores</button>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!--Importation de l'objet `memory`-->
+<script src="js/memory.js"></script>
+<script>
+    $(function () {
+        // On initialise le jeu
+        memory.resetGame();
+
+        // On traque les clicks sur les cartes pour lancer la méthode `play`
+        $('#memory-container').on('click', '.inner', function() {
+            memory.play($(this));
+        });
+
+        // Au click sur le bouton nouveau on réinitialise le jeu
+        $('#new').click(function(){
+            memory.resetGame();
+        });
+
+        // Pour afficher tous les scores
+        $('#show-more').on('click', function(){
+            memory.viewAllScores();
+        });
+
+        // Pour vider le tableau des scores
+        $('#reset').on('click', function(){
+            if(confirm('Etes-vous certain de vouloir effacer tous les scores ?')){
+                memory.resetScores();
+            }
+        });
+    });
+</script>
+</body>
+</html>

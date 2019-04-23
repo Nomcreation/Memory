@@ -1,0 +1,65 @@
+#best-scores {
+  // Style du conteneur
+  border: 1px solid #000;
+  background-color: #ffffff;
+
+  // Titre
+  h2 {
+    background-color: $game_pad_color;
+    padding: 5px 0 10px;
+  }
+
+  // Liste des scores
+  ol {
+    list-style: none;
+    counter-reset: li;
+    padding: 0;
+
+    li {
+      padding: 5px;
+      // Style de la puce
+      counter-increment: li;
+      &:before {
+        content: counter(li);
+        font-weight: bold;;
+        color: red;
+        display: inline-block;
+        width: 1em;
+        margin: 0 10px;
+      }
+
+      // Arrière plan coloré des bandes impaires
+      &:nth-child(odd) {
+        background-color: aliceblue;
+      }
+      // style du score
+      > span.score {
+        font-weight: bold;
+        margin-right: 10px;
+      }
+      // pour la partie `tentatives`
+      > small {
+        font-size: 0.7em;
+        color: rgba(127, 118, 123, 1);
+      }
+    }
+  }
+  button{
+    margin: 5px;
+    font-size: 0.8em;
+  }
+
+  // Gestion des différents points de changement de la grille BS
+  @media (max-width: $lg_breackpoint) {
+    width: $xl_container_width;
+    margin: 20px auto;
+  }
+
+  @media (max-width: $custom_breackpoint) {
+    width: $md_container_width;
+  }
+
+  @media (max-width: $xs_breackpoint) {
+    width: $sm_container_width;
+  }
+}
