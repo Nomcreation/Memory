@@ -3,7 +3,7 @@
 
 Il est possible d'utiliser docker pour déployer l'application en utilisant la commande suivante :
 ```
-$compose up -d --build
+$docker-compose up -d --build
 ```
 L'aplication sera alors accessible sur le port 8000(localhost:8000) et la base de données sur 8080 (localhost:8080)
 
